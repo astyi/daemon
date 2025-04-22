@@ -97,7 +97,7 @@ func (darwin *darwinRecord) Install(args ...string) (string, error) {
 	}
 	defer file.Close()
 
-	execPatch, err := executablePath(darwin.name)
+	execPatch, err := executablePath()
 	if err != nil {
 		return installAction + failed, err
 	}

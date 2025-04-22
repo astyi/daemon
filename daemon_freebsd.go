@@ -18,6 +18,7 @@ import (
 // systemVRecord - standard record (struct) for linux systemV version of daemon package
 type bsdRecord struct {
 	name         string
+	path         string
 	description  string
 	kind         Kind
 	dependencies []string
@@ -125,7 +126,7 @@ func (bsd *bsdRecord) Install(args ...string) (string, error) {
 	}
 	defer file.Close()
 
-	execPatch, err := executablePath(bsd.name)
+	execPatch, err := executablePath()
 	if err != nil {
 		return installAction + failed, err
 	}

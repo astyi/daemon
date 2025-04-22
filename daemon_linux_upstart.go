@@ -72,7 +72,7 @@ func (linux *upstartRecord) Install(args ...string) (string, error) {
 	}
 	defer file.Close()
 
-	execPatch, err := executablePath(linux.name)
+	execPatch, err := executablePath()
 	if err != nil {
 		return installAction + failed, err
 	}

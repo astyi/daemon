@@ -2,7 +2,8 @@
 // Use of this source code is governed by
 // license that can be found in the LICENSE file.
 
-//+build go1.8
+//go:build go1.8
+// +build go1.8
 
 package daemon
 
@@ -10,6 +11,7 @@ import (
 	"errors"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strconv"
 	"strings"
 )
@@ -46,13 +48,8 @@ func ExecPath() (string, error) {
 }
 
 // Lookup path for executable file
-func executablePath(name string) (string, error) {
-	if path, err := exec.LookPath(name); err == nil {
-		if _, err := os.Stat(path); err == nil {
-			return path, nil
-		}
-	}
-	return os.Executable()
+func executablePath() (string, error) {
+	return filepath.Abs(os.Args[0])
 }
 
 // Check root rights to use system service

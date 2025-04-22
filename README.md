@@ -15,7 +15,7 @@ import (
     "fmt"
     "log"
 
-    "github.com/takama/daemon"
+    "github.com/astyi/daemon"
 )
 
 func main() {
